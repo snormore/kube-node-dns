@@ -1,3 +1,5 @@
+⚠️ Use at your own risk, this has not been tested very well yet.
+
 Kubernetes cluster nodes do not use `kube-dns` by default, and so won't resolve in-cluster service DNS names at the host-level. This repo provides a `DaemonSet` that updates `/etc/resolv.conf` on all of the hosts to use `kube-dns`. 
 
 ## Deploy
