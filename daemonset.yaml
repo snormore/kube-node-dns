@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kube-node-dns
+  namespace: kube-system
+  labels:
+    app: kube-node-dns
+spec:
+  selector:
+    matchLabels:
+      name: kube-node-dns
+  template:
+    metadata:
+      labels:
+        name: kube-node-dns
+    spec:
+      containers:
+      - name: kube-node-dns
+        image: snormore/kube-node-dns:latest
+        volumeMounts:
+          - name: host-etc
+            mountPath: /host_etc
+      volumes:
+        - name: host-etc
+          hostPath:
+            path: /etc
